@@ -1,13 +1,13 @@
- import React from 'react';
- import { StatusBar, StyleSheet } from 'react-native';
- import { createNativeStackNavigator } from '@react-navigation/native-stack'; 
- import { NavigationContainer } from '@react-navigation/native';
- import { useColors, useColorScheme, useThemeScheme } from './src/hooks';
- import { SafeAreaProvider } from 'react-native-safe-area-context';
- import { GluestackUIProvider } from './components/ui/gluestack-ui-provider';
- import { RouteEnums, RouteProps } from './src/constants/RouteNames';
- import "./global.css";
- 
+import React from 'react';
+import {StatusBar} from 'react-native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {useColors, useColorScheme} from './src/hooks';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {GluestackUIProvider} from './components/ui/gluestack-ui-provider';
+import {RouteEnums} from './src/constants/RouteNames';
+import './global.css';
+
 // import LoginScreen from './src/screens/Login/Login';
 import HomeScreen from '@/src/views/Home';
 import ExercisesScreen from '@/src/views/Exercises';
@@ -25,29 +25,26 @@ export type RootStackParamList = {
   MyInformations: undefined;
   Options: undefined;
   CreateNewProgram: undefined;
-  AddNewExercise: { dayIndex: number, programId:string, programName:string }; 
+  AddNewExercise: {dayIndex: number; programId: string; programName: string};
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App(): React.JSX.Element {
-
   const colors = useColors();
   const colorScheme = useColorScheme();
 
   return (
-    <NavigationContainer> 
+    <NavigationContainer>
       <SafeAreaProvider>
-        <StatusBar
-          backgroundColor={colors.headerBackground}
-          barStyle={colorScheme == 'dark' ? 'light-content' : 'dark-content'} />
+        <StatusBar backgroundColor={colors.headerBackground} barStyle={colorScheme == 'dark' ? 'light-content' : 'dark-content'} />
         <GluestackUIProvider>
           <Stack.Navigator
             initialRouteName={RouteEnums.home}
             screenOptions={{
               // tabBarShowLabel: false,
               headerShown: false,
-              animation:"none"
+              animation: 'none',
             }}>
             {/* <Stack.Screen name={RouteEnums.login} component={LoginScreen} /> */}
 
@@ -55,22 +52,15 @@ export default function App(): React.JSX.Element {
             <Stack.Screen name={RouteEnums.exercises} component={ExercisesScreen} />
             <Stack.Screen name={RouteEnums.programs} component={ProgramsScreen} />
             <Stack.Screen name={RouteEnums.createNewProgram} component={CreateNewProgramScreen} />
-            <Stack.Screen name={RouteEnums.addNewExercise} component={AddNewExerciseScreen} /> 
-            <Stack.Screen name={RouteEnums.myInfo} component={MyInformationScreen} /> 
-            <Stack.Screen name={RouteEnums.options} component={OptionsScreen} /> 
+            <Stack.Screen name={RouteEnums.addNewExercise} component={AddNewExerciseScreen} />
+            <Stack.Screen name={RouteEnums.myInfo} component={MyInformationScreen} />
+            <Stack.Screen name={RouteEnums.options} component={OptionsScreen} />
           </Stack.Navigator>
         </GluestackUIProvider>
-      </SafeAreaProvider> 
+      </SafeAreaProvider>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#F4F4F4",
-  },
-});
 
 // type SectionProps = PropsWithChildren<{
 //   title: string;
