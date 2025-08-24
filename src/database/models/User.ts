@@ -1,4 +1,4 @@
-import { Model } from '@nozbe/watermelondb';
+import { Model, Query } from '@nozbe/watermelondb';
 import { children, field, text } from '@nozbe/watermelondb/decorators';
 import { Associations } from '@nozbe/watermelondb/Model';
 import Program from './Program';
@@ -15,8 +15,8 @@ export default class User extends Model {
   @field('body_mass_index') bodyMassIndex?: number;
 
   // One-to-Many
-  @children('programs') programs?: Program[];
-  @children('weight_history_data') weightDataset?: WeightHistoryData[];
+  @children('programs') programs?: Query<Program>;
+  @children('weight_history_data') weightDataset?: Query<WeightHistoryData>;
 
   static associations: Associations = {
     programs: {type: 'has_many', foreignKey: 'user_id'},

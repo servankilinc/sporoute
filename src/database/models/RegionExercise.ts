@@ -1,4 +1,4 @@
-import { Model } from '@nozbe/watermelondb';
+import { Model, Relation } from '@nozbe/watermelondb';
 import { field, relation } from '@nozbe/watermelondb/decorators';
 import { Associations } from '@nozbe/watermelondb/Model';
 import Exercise from './Exercise';
@@ -10,8 +10,8 @@ export default class RegionExercise extends Model {
   @field('region_id') regionId!: string;
   @field('exercise_id') exerciseId!: string;
 
-  @relation('regions', 'region_id') region?: Region;
-  @relation('exercises', 'exercise_id') exercise?: Exercise;
+  @relation('regions', 'region_id') region!: Relation<Region>;
+  @relation('exercises', 'exercise_id') exercise!: Relation<Exercise>;
 
   static associations: Associations = {
     regions: {type: 'belongs_to', key: 'region_id'},

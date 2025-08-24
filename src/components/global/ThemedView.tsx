@@ -14,7 +14,7 @@ export function ThemedView({style, lightColor, darkColor, ...otherProps}: Themed
     <View
       style={[
         {backgroundColor: colorScheme === 'dark' ? darkColor || Colors.dark.bodyBackground : lightColor || Colors.light.bodyBackground},
-        {borderRadius: 8, paddingHorizontal: 12, paddingVertical: 8, margin: 8, borderWidth: 1, borderColor: colorScheme === 'dark' ? Colors.dark.border : Colors.light.border},
+        {borderRadius: 8, padding: 14, borderWidth: 1, borderColor: colorScheme === 'dark' ? Colors.dark.border : Colors.light.border},
         style,
       ]}
       {...otherProps}

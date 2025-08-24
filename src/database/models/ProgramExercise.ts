@@ -1,4 +1,4 @@
-import { Model } from '@nozbe/watermelondb';
+import { Model, Query, Relation } from '@nozbe/watermelondb';
 import { children, date, field, relation } from '@nozbe/watermelondb/decorators';
 import { Associations } from '@nozbe/watermelondb/Model';
 import Exercise from './Exercise';
@@ -16,9 +16,9 @@ export default class ProgramExercise extends Model {
   @field('number_of_repetition') numberOfRepetition!: number;
   @field('time') time!: number;
 
-  @relation('programs', 'program_id') program?: Program;
-  @relation('exercises', 'exercise_id') exercise?: Exercise;
-  @children('fulfillments') fulfillments?: Fulfillment[];
+  @relation('programs', 'program_id') program!: Relation<Program>;
+  @relation('exercises', 'exercise_id') exercise!: Relation<Exercise>;
+  @children('fulfillments') fulfillments?: Query<Fulfillment>;
 
   static associations: Associations = {
     programs: {type: 'belongs_to', key: 'program_id'},

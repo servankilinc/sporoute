@@ -1,12 +1,12 @@
-import { Colors } from '@/src/constants/Colors';
-import { useColorScheme } from 'nativewind';
-import { StyleSheet, Text, type TextProps } from 'react-native';
+import {Colors} from '@/src/constants/Colors';
+import {useColorScheme} from 'nativewind';
+import {StyleSheet, Text, type TextProps} from 'react-native';
 
 export type ThemedTextProps = TextProps & {
   className?: string;
   lightColor?: string;
   darkColor?: string;
-  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';
+  type?: 'custom' | 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';
 };
 
 export function ThemedText({style, className, lightColor, darkColor, type = 'default', ...rest}: ThemedTextProps) {
@@ -33,26 +33,21 @@ const styles = StyleSheet.create({
   default: {
     fontSize: 16,
     lineHeight: 24,
-    fontWeight: '400',
   },
   defaultSemiBold: {
     fontSize: 16,
     lineHeight: 24,
-    fontWeight: '400',
   },
   title: {
     fontSize: 32,
     lineHeight: 32,
-    fontWeight: '400',
   },
   subtitle: {
     fontSize: 20,
-    fontWeight: '400',
   },
   link: {
     lineHeight: 30,
     fontSize: 16,
     color: '#0a7ea4',
-    fontWeight: '400',
   },
 });

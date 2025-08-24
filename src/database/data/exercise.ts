@@ -34,7 +34,7 @@ export const data = [
     exercise: {
       id: 'c2c525f0-621e-451e-a552-08dcd49356cd',
       name: 'Overhead Squat',
-      content: 'c2c525f0-621e-451e-a552-08dcd49356cd.jpg',
+      content: 'c2c525f0-621e-451e-a552-08dcd49356cd.webp',
       description: 'A full-body exercise that targets multiple muscle groups.',
       exerciseType: 1,
     },
@@ -60,7 +60,7 @@ export const data = [
     exercise: {
       id: '1d86d525-2e65-4f40-a555-08dcd493571d',
       name: 'Plank',
-      content: '1d86d525-2e65-4f40-a555-08dcd493571d.jpg',
+      content: '1d86d525-2e65-4f40-a555-08dcd493571d.webp',
       description: 'A core-strengthening exercise that improves posture.',
       exerciseType: 2,
     },
@@ -88,7 +88,7 @@ export const data = [
     exercise: {
       id: '3b4c8d22-f55e-49d3-aaa1-9876543210ff',
       name: 'Crunch',
-      content: '3b4c8d22-f55e-49d3-aaa1-9876543210ff.jpg',
+      content: '3b4c8d22-f55e-49d3-aaa1-9876543210ff.webp',
       description: 'One of the common exercises that develops abdominal muscles.',
       exerciseType: 1,
     },
@@ -101,7 +101,7 @@ export const data = [
     exercise: {
       id: '49d81e22-f73a-4d4a-bb22-111122223333',
       name: 'Pull-Up',
-      content: '49d81e22-f73a-4d4a-bb22-111122223333.jpg',
+      content: '49d81e22-f73a-4d4a-bb22-111122223333.webp',
       description: 'Bodyweight exercise that works the back and biceps muscles.',
       exerciseType: 1,
     },
@@ -115,7 +115,7 @@ export const data = [
     exercise: {
       id: '5e6f7a8b-9c4d-3e91-d508-dcd49355fe4d',
       name: 'Deadlift',
-      content: '5e6f7a8b-9c4d-3e91-d508-dcd49355fe4d.jpg',
+      content: '5e6f7a8b-9c4d-3e91-d508-dcd49355fe4d.webp',
       description: "You lift the weight off the floor with the help of your body's major muscle groups.",
       exerciseType: 1,
     },
@@ -130,7 +130,7 @@ export const data = [
     exercise: {
       id: '7a8b9c4d-3e91-d508-dcd4-9355fe4d5e6f',
       name: 'Push-Up',
-      content: '7a8b9c4d-3e91-d508-dcd4-9355fe4d5e6f.jpg',
+      content: '7a8b9c4d-3e91-d508-dcd4-9355fe4d5e6f.webp',
       description: 'The push-up is a common calisthenics exercise beginning from the prone position.',
       exerciseType: 1,
     },
@@ -144,7 +144,7 @@ export const data = [
     exercise: {
       id: '4d3e91d5-08dc-d493-55fe-4d5e6f7a8b9c',
       name: 'Calf Raise',
-      content: '4d3e91d5-08dc-d493-55fe-4d5e6f7a8b9c.jpg',
+      content: '4d3e91d5-08dc-d493-55fe-4d5e6f7a8b9c.webp',
       description: 'Basic exercise to develop calf muscles',
       exerciseType: 1,
     },
@@ -156,7 +156,7 @@ export const data = [
     exercise: {
       id: '3e91d508-dcd4-9355-fe4d-5e6f7a8b9c4d',
       name: 'Lat Pulldown',
-      content: '3e91d508-dcd4-9355-fe4d-5e6f7a8b9c4d.jpg',
+      content: '3e91d508-dcd4-9355-fe4d-5e6f7a8b9c4d.webp',
       description: 'Effective exercise for broad back muscles',
       exerciseType: 1,
     },
@@ -169,7 +169,7 @@ export const data = [
     exercise: {
       id: '91d508dc-d493-55fe-4d5e-6f7a8b9c4d3e',
       name: 'Leg Curl',
-      content: '91d508dc-d493-55fe-4d5e-6f7a8b9c4d3e.jpg',
+      content: '91d508dc-d493-55fe-4d5e-6f7a8b9c4d3e.webp',
       description: 'Movement that works the hamstring muscles in isolation',
       exerciseType: 1,
     },
@@ -193,7 +193,7 @@ export const data = [
     exercise: {
       id: '9355fe4d-5e6f-7a8b-9c4d-3e91d508dcd4',
       name: 'Bicycle Crunch',
-      content: '9355fe4d-5e6f-7a8b-9c4d-3e91d508dcd4.jpg',
+      content: '9355fe4d-5e6f-7a8b-9c4d-3e91d508dcd4.webp',
       description: 'Effective movement that works all abdominal muscles',
       exerciseType: 2,
     },
@@ -207,7 +207,7 @@ export const data = [
     exercise: {
       id: 'fe4d5e6f-7a8b-9c4d-3e91-d508dcd49355',
       name: 'Triceps Dip',
-      content: 'fe4d5e6f-7a8b-9c4d-3e91-d508dcd49355.jpg',
+      content: 'fe4d5e6f-7a8b-9c4d-3e91-d508dcd49355.webp',
       description: 'Effective movement targeting the triceps muscles',
       exerciseType: 1,
     },

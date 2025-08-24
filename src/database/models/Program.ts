@@ -1,4 +1,4 @@
-import { Model } from '@nozbe/watermelondb'
+import { Model, Query, Relation } from '@nozbe/watermelondb'
 import { children, date, field, relation, text } from '@nozbe/watermelondb/decorators'
 import { Associations } from '@nozbe/watermelondb/Model'
 import ProgramExercise from './ProgramExercise'
@@ -11,8 +11,8 @@ export default class Program extends Model {
   @text('name') name!: string
   @date('created_date') createdDate!: Date
 
-  @relation('users', 'user_id') user!: User
-  @children('program_exercises') programExercises!: ProgramExercise[]
+  @relation('users', 'user_id') user!: Relation<User>
+  @children('program_exercises') programExercises!: Query<ProgramExercise>
 
   // TS tip uyumlu associations
   static associations: Associations = {

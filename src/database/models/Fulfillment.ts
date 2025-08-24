@@ -1,4 +1,4 @@
-import { Model } from '@nozbe/watermelondb';
+import { Model, Relation } from '@nozbe/watermelondb';
 import { date, field, relation } from '@nozbe/watermelondb/decorators';
 import { Associations } from '@nozbe/watermelondb/Model';
 import ProgramExercise from './ProgramExercise';
@@ -10,7 +10,7 @@ export default class Fulfillment extends Model {
   @date('completion_date') completionDate!: Date;
   @date('completion_date_indexer') completionDateIndexer!: Date; // ISO string // YYYY-MM-DD
 
-  @relation('program_exercises', 'program_exercise_id') programExercises?: ProgramExercise[];
+  @relation('program_exercises', 'program_exercise_id') programExercises?: Relation<ProgramExercise>;
 
   static associations: Associations = {
     program_exercises: {type: 'belongs_to', key: 'program_exercise_id'},

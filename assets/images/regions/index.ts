@@ -1,0 +1,18 @@
+export const regionImageMap: Record<string, any> = {
+  placeholder: require('../placeholder.png'),
+  '02764bc5-8138-4e3c-5502-08dcd4c2abcb': require('./02764bc5-8138-4e3c-5502-08dcd4c2abcb.png'),
+  '02c74030-cf5e-40c4-5500-08dcd4c2abcb': require('./02c74030-cf5e-40c4-5500-08dcd4c2abcb.png'),
+  '143d505b-6fad-42aa-550d-08dcd4c2abcb': require('./143d505b-6fad-42aa-550d-08dcd4c2abcb.png'),
+  '356fa8d4-3c51-4410-550a-08dcd4c2abcb': require('./356fa8d4-3c51-4410-550a-08dcd4c2abcb.png'),
+  '5f2dd122-b1c3-4195-550b-08dcd4c2abcb': require('./5f2dd122-b1c3-4195-550b-08dcd4c2abcb.png'),
+  '78821fd2-223e-46ee-5508-08dcd4c2abcb': require('./78821fd2-223e-46ee-5508-08dcd4c2abcb.png'),
+  '85758791-3ba1-4e9e-5506-08dcd4c2abcb': require('./85758791-3ba1-4e9e-5506-08dcd4c2abcb.png'),
+  '8611c489-0e94-4f5e-5509-08dcd4c2abcb': require('./8611c489-0e94-4f5e-5509-08dcd4c2abcb.png'),
+  '89e28c3a-078a-4c59-5501-08dcd4c2abcb': require('./89e28c3a-078a-4c59-5501-08dcd4c2abcb.png'),
+  'a436ccf0-e8f7-4fe9-5507-08dcd4c2abcb': require('./a436ccf0-e8f7-4fe9-5507-08dcd4c2abcb.png'),
+  'a699d914-362c-43e4-550c-08dcd4c2abcb': require('./a699d914-362c-43e4-550c-08dcd4c2abcb.png'),
+  'aa9d4d2d-9ee7-43d0-3a84-08dcd81e6fed': require('./aa9d4d2d-9ee7-43d0-3a84-08dcd81e6fed.jpg'),
+  'bc1e8801-f11d-421e-5504-08dcd4c2abcb': require('./bc1e8801-f11d-421e-5504-08dcd4c2abcb.png'),
+  'cb3c7a70-cf41-485c-5505-08dcd4c2abcb': require('./cb3c7a70-cf41-485c-5505-08dcd4c2abcb.png'),
+  'f2bc0a83-654f-495f-5503-08dcd4c2abcb': require('./f2bc0a83-654f-495f-5503-08dcd4c2abcb.png'),
+};

@@ -34,7 +34,7 @@ export default function Header({title}: HeaderSectionProps): React.JSX.Element {
   }
 
   return (
-    <View className="rounded-b-xl shadow-xl gap-3 mb-4 px-6 pb-4" style={{backgroundColor: colors.headerBackground}}>
+    <View className="rounded-b-xl shadow-xl gap-3 px-6 py-4" style={{backgroundColor: colors.headerBackground}}>
       <View className="h-6 flex flex-col">
         <Image className="size-full" style={{objectFit: 'contain'}} source={require('@/assets/images/logo/logo-no-background.png')} />
       </View>

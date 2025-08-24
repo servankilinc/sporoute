@@ -1,4 +1,4 @@
-import { Model } from '@nozbe/watermelondb';
+import { Model, Relation } from '@nozbe/watermelondb';
 import { children, field } from '@nozbe/watermelondb/decorators';
 import { Associations } from '@nozbe/watermelondb/Model';
 import RegionExercise from './RegionExercise';
@@ -9,7 +9,7 @@ export default class Region extends Model {
   @field('name') name!: string;
   @field('content') content?: string;
 
-  @children('region_exercises') regionExercises?: RegionExercise[];
+  @children('region_exercises') regionExercises?: Relation<RegionExercise>;
 
   static associations: Associations = {
     region_exercises: {type: 'has_many', foreignKey: 'region_id'},

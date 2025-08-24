@@ -11,7 +11,7 @@ export default function AppLayout({children, title, returnbackEnable, returnHome
   return (
     <View style={{flex: 1, backgroundColor: colors.background}}>
       <Header title={title} returnbackEnable={returnbackEnable} returnHomeEnable={returnHomeEnable} />
-      <ScrollView>{children}</ScrollView>
+      <ScrollView style={{marginHorizontal: 12, marginTop: 12, marginBottom: 24 }}>{children}</ScrollView>
       <Footer />
     </View>
   );

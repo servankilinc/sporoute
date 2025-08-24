@@ -3,6 +3,7 @@ import React from 'react';
 import { tva } from '@gluestack-ui/nativewind-utils/tva';
 import { Platform, View } from 'react-native';
 import type { VariantProps } from '@gluestack-ui/nativewind-utils';
+import { useColors } from '@/src/hooks';
 
 const dividerStyle = tva({
   base: 'bg-background-200',
@@ -21,6 +22,7 @@ const Divider = React.forwardRef<
   React.ComponentRef<typeof View>,
   IUIDividerProps
 >(function Divider({ className, orientation = 'horizontal', ...props }, ref) {
+  const colors = useColors();
   return (
     <View
       ref={ref}
@@ -31,6 +33,7 @@ const Divider = React.forwardRef<
         orientation,
         class: className,
       })}
+      style={{backgroundColor: colors.silent}}
     />
   );
 });
