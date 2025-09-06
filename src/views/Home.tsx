@@ -10,6 +10,8 @@ import ProgramCard from '../components/home/ProgramCard';
 import userService from '../database/services/userService';
 import {ThemedButton} from '../components/global/ThemedButton';
 import {ThemedAlert} from '../components/global/ThemedAlert';
+import programService from '../database/services/programService';
+import ProgramExercise from '../database/models/ProgramExercise';
 
 export default function HomeScreen() {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
@@ -28,8 +30,10 @@ export default function HomeScreen() {
       setIsPending(false);
     }
     const user = await userService.GetUser();
-    const data = await database.get<Program>(SchmeaModels.programs).query(Q.where('user_id', user.id)).fetch();
-    setData(data);
+    // var temp = await programService.GetCurrentDayProgramDetails();
+    // console.log("Current Day Programs => ", temp)
+    
+    // setData(data);
   };
 
   return (

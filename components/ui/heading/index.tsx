@@ -1,9 +1,8 @@
 import React, { forwardRef, memo } from 'react';
 import { H1, H2, H3, H4, H5, H6 } from '@expo/html-elements';
 import { headingStyle } from './styles';
-import type { VariantProps } from '@gluestack-ui/nativewind-utils';
+import type { VariantProps } from '@gluestack-ui/utils/nativewind-utils';
 import { cssInterop } from 'nativewind';
-import { useColors } from '@/src/hooks';
 
 type IHeadingProps = VariantProps<typeof headingStyle> &
   React.ComponentPropsWithoutRef<typeof H1> & {
@@ -42,13 +41,13 @@ const MappedHeading = memo(
             <H1
               className={headingStyle({
                 size,
-                isTruncated,
-                bold,
-                underline,
-                strikeThrough,
-                sub,
-                italic,
-                highlight,
+                isTruncated: isTruncated as boolean,
+                bold: bold as boolean,
+                underline: underline as boolean,
+                strikeThrough: strikeThrough as boolean,
+                sub: sub as boolean,
+                italic: italic as boolean,
+                highlight: highlight as boolean,
                 class: className,
               })}
               {...props}
@@ -61,13 +60,13 @@ const MappedHeading = memo(
             <H2
               className={headingStyle({
                 size,
-                isTruncated,
-                bold,
-                underline,
-                strikeThrough,
-                sub,
-                italic,
-                highlight,
+                isTruncated: isTruncated as boolean,
+                bold: bold as boolean,
+                underline: underline as boolean,
+                strikeThrough: strikeThrough as boolean,
+                sub: sub as boolean,
+                italic: italic as boolean,
+                highlight: highlight as boolean,
                 class: className,
               })}
               {...props}
@@ -80,13 +79,13 @@ const MappedHeading = memo(
             <H3
               className={headingStyle({
                 size,
-                isTruncated,
-                bold,
-                underline,
-                strikeThrough,
-                sub,
-                italic,
-                highlight,
+                isTruncated: isTruncated as boolean,
+                bold: bold as boolean,
+                underline: underline as boolean,
+                strikeThrough: strikeThrough as boolean,
+                sub: sub as boolean,
+                italic: italic as boolean,
+                highlight: highlight as boolean,
                 class: className,
               })}
               {...props}
@@ -99,13 +98,13 @@ const MappedHeading = memo(
             <H4
               className={headingStyle({
                 size,
-                isTruncated,
-                bold,
-                underline,
-                strikeThrough,
-                sub,
-                italic,
-                highlight,
+                isTruncated: isTruncated as boolean,
+                bold: bold as boolean,
+                underline: underline as boolean,
+                strikeThrough: strikeThrough as boolean,
+                sub: sub as boolean,
+                italic: italic as boolean,
+                highlight: highlight as boolean,
                 class: className,
               })}
               {...props}
@@ -118,13 +117,13 @@ const MappedHeading = memo(
             <H5
               className={headingStyle({
                 size,
-                isTruncated,
-                bold,
-                underline,
-                strikeThrough,
-                sub,
-                italic,
-                highlight,
+                isTruncated: isTruncated as boolean,
+                bold: bold as boolean,
+                underline: underline as boolean,
+                strikeThrough: strikeThrough as boolean,
+                sub: sub as boolean,
+                italic: italic as boolean,
+                highlight: highlight as boolean,
                 class: className,
               })}
               {...props}
@@ -138,13 +137,13 @@ const MappedHeading = memo(
             <H6
               className={headingStyle({
                 size,
-                isTruncated,
-                bold,
-                underline,
-                strikeThrough,
-                sub,
-                italic,
-                highlight,
+                isTruncated: isTruncated as boolean,
+                bold: bold as boolean,
+                underline: underline as boolean,
+                strikeThrough: strikeThrough as boolean,
+                sub: sub as boolean,
+                italic: italic as boolean,
+                highlight: highlight as boolean,
                 class: className,
               })}
               {...props}
@@ -157,13 +156,13 @@ const MappedHeading = memo(
             <H4
               className={headingStyle({
                 size,
-                isTruncated,
-                bold,
-                underline,
-                strikeThrough,
-                sub,
-                italic,
-                highlight,
+                isTruncated: isTruncated as boolean,
+                bold: bold as boolean,
+                underline: underline as boolean,
+                strikeThrough: strikeThrough as boolean,
+                sub: sub as boolean,
+                italic: italic as boolean,
+                highlight: highlight as boolean,
                 class: className,
               })}
               {...props}
@@ -191,19 +190,18 @@ const Heading = memo(
       highlight,
     } = props;
 
-    const colors = useColors();
     if (AsComp) {
       return (
         <AsComp
           className={headingStyle({
             size,
-            isTruncated,
-            bold,
-            underline,
-            strikeThrough,
-            sub,
-            italic,
-            highlight,
+            isTruncated: isTruncated as boolean,
+            bold: bold as boolean,
+            underline: underline as boolean,
+            strikeThrough: strikeThrough as boolean,
+            sub: sub as boolean,
+            italic: italic as boolean,
+            highlight: highlight as boolean,
             class: className,
           })}
           {...props}
@@ -212,7 +210,7 @@ const Heading = memo(
     }
 
     return (
-      <MappedHeading className={className} size={size} ref={ref} {...props} style={{ color: colors.text }} />
+      <MappedHeading className={className} size={size} ref={ref} {...props} />
     );
   })
 );

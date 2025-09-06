@@ -34,13 +34,13 @@ export const RouteProps = {
     name: 'MyInformations',
     title: 'Informations'
   },
-  createNewProgram: {
-    name: 'CreateNewProgram',
-    title: 'Create New Program'
+  createProgram: {
+    name: 'CreateProgram',
+    title: 'Create Program'
   },
-  addNewExercise: {
-    name: 'AddNewExercise',
-    title: 'Add New Exercise'
+  editProgram: {
+    name: 'EditProgram',
+    title: 'Edit Program'
   },  
   options: {
     name: 'Options',
@@ -53,8 +53,8 @@ export enum RouteEnums {
   exercises = 'Exercises',
   programs = 'Programs',
   myInfo = 'MyInformations',
-  createNewProgram = 'CreateNewProgram',
-  addNewExercise = 'AddNewExercise',  
+  createProgram = 'CreateProgram',
+  editProgram = 'EditProgram',  
   options = 'Options'
 };
 

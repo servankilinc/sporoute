@@ -10,7 +10,7 @@ export const schema = appSchema({
         {name: 'name', type: 'string'},
         {name: 'content', type: 'string', isOptional: true},
         {name: 'description', type: 'string', isOptional: true},
-        {name: 'exercise_type', type: 'string'},
+        {name: 'exercise_type', type: 'number'},
       ],
     }),
     tableSchema({

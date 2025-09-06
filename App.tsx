@@ -15,8 +15,8 @@ import './global.css';
 import HomeScreen from '@/src/views/Home';
 import ExercisesScreen from '@/src/views/Exercises';
 import ProgramsScreen from '@/src/views/Programs';
-import CreateNewProgramScreen from '@/src/views/CreateNewProgram';
-import AddNewExerciseScreen from '@/src/views/AddNewExercise';
+import CreateProgramScreen from '@/src/views/CreateProgram';
+import EditProgramScreen from '@/src/views/EditProgram';
 import MyInformationScreen from '@/src/views/MyInformations';
 import OptionsScreen from '@/src/views/Options';
 
@@ -27,8 +27,8 @@ export type RootStackParamList = {
   Programs: undefined;
   MyInformations: undefined;
   Options: undefined;
-  CreateNewProgram: undefined;
-  AddNewExercise: {dayIndex: number; programId: string; programName: string};
+  CreateProgram: undefined;
+  EditProgram: {programId: string};
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -66,8 +66,8 @@ export default function App() {
                 <Stack.Screen name={RouteEnums.home} component={HomeScreen} />
                 <Stack.Screen name={RouteEnums.exercises} component={ExercisesScreen} />
                 <Stack.Screen name={RouteEnums.programs} component={ProgramsScreen} />
-                <Stack.Screen name={RouteEnums.createNewProgram} component={CreateNewProgramScreen} />
-                <Stack.Screen name={RouteEnums.addNewExercise} component={AddNewExerciseScreen} />
+                <Stack.Screen name={RouteEnums.createProgram} component={CreateProgramScreen} />
+                <Stack.Screen name={RouteEnums.editProgram} component={EditProgramScreen} />
                 <Stack.Screen name={RouteEnums.myInfo} component={MyInformationScreen} />
                 <Stack.Screen name={RouteEnums.options} component={OptionsScreen} />
               </Stack.Navigator>
