@@ -29,6 +29,7 @@ import programService from '@/src/database/services/programService';
 import {exerciseImageMap} from '@/assets/images/exercises';
 import {View} from 'react-native';
 import ProgramExerciseCreateRequest from '@/src/models/programExercise/ProgramExerciseCreateRequest';
+import TriggerInput from '../../general/TriggerInput';
 //#endregion
 
 type SectionProps = {
@@ -251,10 +252,8 @@ function ExerciseCard({exerciseAddProgramModel, programId}: SectionProps): React
             <TriggerInput label='Minuthe' value={programExercise!.time ?? 0} method={ChangeNumberOfTime} /> : <></>
         }
       </HStack>
-
-      <Divider className="my-2" />
       
-      <HStack style={{justifyContent: 'flex-end'}} space='md'>
+      <HStack style={{justifyContent: 'flex-end', marginTop: 12}} space='md'>
         {isAdded && isChanged && 
           <ThemedButton 
             element={<FontAwesome6 name='pen-to-square' color={'#fff'} size={13} />}
@@ -291,32 +290,6 @@ function ExerciseCard({exerciseAddProgramModel, programId}: SectionProps): React
 
 export default ExerciseCard;
 
-
-
-function TriggerInput(props: { label: string; value: number; method: (value: number) => void; }) 
-{
-  const colors = useColors();
-  return (
-    <VStack>
-      <ThemedText className="text-xs font-bold ml-1 mb-1" type="custom">
-        {props.label}
-      </ThemedText>
-      <HStack className="rounded-xl items-center gap-2 p-1 bg-stone-200 dark:bg-stone-800">
-        <Pressable className="rounded-lg p-2 bg-stone-50 dark:bg-stone-500" onLongPress={() => props.method(0)} onPress={() => props.method(-1)}>
-          <FontAwesome6 name="minus" iconStyle="solid" color={colors.text} size={13} />
-        </Pressable>
-        <ThemedText className="mx-2 font-bold" type="custom">
-          {props.value}
-        </ThemedText>
-        <Pressable className="rounded-lg p-2 bg-stone-50 dark:bg-stone-500" onLongPress={() => props.method(15)} onPress={() => props.method(1)}>
-          <FontAwesome6 name="plus" iconStyle="solid" color={colors.text} size={13} />
-        </Pressable>
-      </HStack>
-    </VStack>
-  );
-}
-
-
 export function SelectBoxDaySelection(props: { stateSelectedDay: number; onChange: (value: string) => void; }) 
 {
   return (
@@ -325,7 +298,7 @@ export function SelectBoxDaySelection(props: { stateSelectedDay: number; onChang
         Day
       </ThemedText>
       <Select onValueChange={e => props.onChange(e)} className="w-36">
-        <SelectTrigger variant="outline" className="bg-white dark:bg-stone-700 h-auto" size="sm">
+        <SelectTrigger variant="outline" className="bg-white dark:bg-stone-700" size="sm">
           <SelectInput placeholder="Select day" size="sm" />
           <SelectIcon>
             <Icon as={ChevronDownIcon} size="2xs" />

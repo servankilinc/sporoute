@@ -21,9 +21,28 @@ const switchStyle = tva({
     },
   },
 });
+const switchThemedStyle = tva({
+  base: `data-[focus=true]:outline-0 
+    data-[focus=true]:ring-2 
+    data-[focus=true]:red-900
+    web:cursor-pointer 
+    disabled:cursor-not-allowed 
+    data-[disabled=true]:opacity-40 
+    data-[invalid=true]:border-error-700 
+    data-[invalid=true]:rounded-xl 
+    data-[invalid=true]:border-2`,
+
+  variants: {
+    size: {
+      sm: 'scale-75',
+      md: '',
+      lg: 'scale-125',
+    },
+  },
+});
 
 type ISwitchProps = React.ComponentProps<typeof UISwitch> &
-  VariantProps<typeof switchStyle>;
+  VariantProps<typeof switchThemedStyle>;
 const Switch = React.forwardRef<
   React.ComponentRef<typeof UISwitch>,
   ISwitchProps
@@ -32,7 +51,7 @@ const Switch = React.forwardRef<
     <UISwitch
       ref={ref}
       {...props}
-      className={switchStyle({ size, class: className })}
+      className={switchThemedStyle({ size, class: className })}
     />
   );
 });

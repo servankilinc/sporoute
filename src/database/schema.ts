@@ -18,7 +18,7 @@ export const schema = appSchema({
       columns: [
         {name: 'program_exercise_id', type: 'string', isIndexed: true},
         {name: 'completion_date', type: 'number'},
-        {name: 'completion_date_indexer', type: 'number'},
+        {name: 'completion_date_indexer', type: 'string'},
       ],
     }),
     tableSchema({

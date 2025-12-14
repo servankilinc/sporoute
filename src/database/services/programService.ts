@@ -6,14 +6,14 @@ import UserService from './userService';
 import ProgramExercise from '../models/ProgramExercise';
 import CreateProgramRequest from '@/src/models/program/ProgramCreateRequest';
 import ProgramResponseDto from '@/src/models/program/ProgramResponseDto';
-import ProgramExerciseResponseDto, { MapToProgramExerciseResponseDto } from '@/src/models/programExercise/ProgramExerciseResponseDto';
+import ProgramExerciseResponseDto, {MapToProgramExerciseResponseDto} from '@/src/models/programExercise/ProgramExerciseResponseDto';
 import userService from './userService';
 import UpdateExerciseOfProgramRequest from '@/src/models/programExercise/ProgramExerciseUpdateRequest';
 import Exercise from '../models/Exercise';
 import ProgramExerciseCreateRequest from '@/src/models/programExercise/ProgramExerciseCreateRequest';
-import { ExerciseAddProgramUIModel } from '@/src/redux/reducers/StatesCreateProgram';
-import ProgramDetailCurrentDayModel, { FulfillmentsCurrentDayModel } from '@/src/models/program/ProgramDetailCurrentDayModel';
-import ExerciseResponseDto, { MapToExerciseResponseDto } from '@/src/models/exercise/ExerciseResponseDto';
+import {ExerciseAddProgramUIModel} from '@/src/redux/reducers/StatesCreateProgram';
+import ProgramDetailCurrentDayModel, {FulfillmentsCurrentDayModel} from '@/src/models/program/ProgramDetailCurrentDayModel';
+import ExerciseResponseDto, {MapToExerciseResponseDto} from '@/src/models/exercise/ExerciseResponseDto';
 import ProgramDetailModel from '@/src/models/program/ProgramDetailModel';
 import exerciseService from './exerciseService';
 import 'react-native-get-random-values';
@@ -26,7 +26,7 @@ export default {
 
     var insertedData = await database.write(async () => {
       return await database.get<Program>(SchmeaModels.programs).create(toInsert => {
-        (toInsert.userId = request.userId), (toInsert.name = request.name);
+        (toInsert.createdDate = new Date()), (toInsert.userId = request.userId), (toInsert.name = request.name);
       });
     });
 
@@ -90,29 +90,31 @@ export default {
   Get: async function (programId: string): Promise<ProgramResponseDto> {
     const program = await database.get<Program>(SchmeaModels.programs).find(programId);
 
-      return { 
-        id: program.id,
-        name: program.name,
-        userId: program.userId,
-        createdDate: program.createdDate
-      } as ProgramResponseDto
+    return {
+      id: program.id,
+      name: program.name,
+      userId: program.userId,
+      createdDate: program.createdDate,
+    } as ProgramResponseDto;
   },
   GetUserPrograms: async function (userId: string): Promise<ProgramDetailModel[]> {
     const programs = await database.get<Program>(SchmeaModels.programs).query(Q.where('user_id', userId)).fetch();
 
-    return await Promise.all(programs.map(async p => {
-      const programExercises = await exerciseService.GetProgramExerciseDetails(p.id);
+    return await Promise.all(
+      programs.map(async p => {
+        const programExercises = await exerciseService.GetProgramExerciseDetails(p.id);
 
-      return {
-        program: {
-          id: p.id,
-          name: p.name,
-          userId: p.userId,
-          createdDate: p.createdDate
-        },
-        programExercises: programExercises
-      } as ProgramDetailModel
-    }));
+        return {
+          program: {
+            id: p.id,
+            name: p.name,
+            userId: p.userId,
+            createdDate: p.createdDate,
+          },
+          programExercises: programExercises,
+        } as ProgramDetailModel;
+      }),
+    );
   },
   GetProgramExercises: async function (programId: string): Promise<ProgramExerciseResponseDto[]> {
     const programExercises = await database.get<ProgramExercise>(SchmeaModels.program_exercises).query(Q.where('program_id', programId)).fetch();
@@ -142,68 +144,72 @@ export default {
         return {
           // ui props
           isAdded: false,
-          selectedDay: 0, 
+          selectedDay: 0,
           isChanged: false,
-          
+
           // persist props
           exercise: await MapToExerciseResponseDto(e),
-          programExercises: programExercises.filter(f => f.exerciseId == e.id).map(pe => {
-            return {
-              id: pe.id,
-              programId: pe.programId,
-              exerciseId: pe.exerciseId,
-              day: pe.day,
-              numberOfSets: pe.numberOfSets,
-              numberOfRepetition: pe.numberOfRepetition,
-              time: pe.time,
-            }
-          }),
+          programExercises: programExercises
+            .filter(f => f.exerciseId == e.id)
+            .map(pe => {
+              return {
+                id: pe.id,
+                programId: pe.programId,
+                exerciseId: pe.exerciseId,
+                day: pe.day,
+                numberOfSets: pe.numberOfSets,
+                numberOfRepetition: pe.numberOfRepetition,
+                time: pe.time,
+              };
+            }),
         } as ExerciseAddProgramUIModel;
       }),
     );
   },
-  GetCurrentDayProgramDetails : async function (): Promise<ProgramDetailCurrentDayModel[]> {
+  GetCurrentDayProgramDetails: async function (): Promise<ProgramDetailCurrentDayModel[]> {
     const today = new Date();
     let filtredPrograms: Program[] = [];
 
     const user = await UserService.GetUser();
-    await database.get<Program>(SchmeaModels.programs).query(Q.where('user_id', user.id)).fetch()
+    await database
+      .get<Program>(SchmeaModels.programs)
+      .query(Q.where('user_id', user.id))
+      .fetch()
       .then(async allPrograms => {
         await Promise.all(
           allPrograms.map(async p => {
             let pe = await p.programExercises.fetch();
-            if (pe != null && pe.some(f => f.day === (today.getDay()))) {
-              console.log("pushed", p);
+            if (pe != null && pe.some(f => f.day === today.getDay())) {
               filtredPrograms.push(p);
             }
-          })
+          }),
         );
       });
-      
+
     const todayStr = today.toLocaleDateString();
-    
+
     return await Promise.all(
       filtredPrograms.map(async p => {
         let programExercises = await p.programExercises.fetch();
         if (programExercises === null) programExercises = [];
-
         const fulfillmentExerciseModel = await Promise.all(
-          programExercises.filter(pe => pe.day === today.getDay())
+          programExercises
+            .filter(pe => pe.day === today.getDay())
             .map(async pe => {
               const exercise = await pe.exercise.fetch();
               const fulfillments = await pe.fulfillments?.fetch();
-           
+
               return {
                 exercise: await MapToExerciseResponseDto(exercise),
                 programExercise: await MapToProgramExerciseResponseDto(pe),
-                completionStatus:
-                  fulfillments == null ? false : fulfillments.some(f => new Date(f.completionDate).toLocaleDateString() === todayStr),
+                completionStatus: fulfillments == null ? false : fulfillments.some(f => new Date(f.completionDate).toLocaleDateString() === todayStr),
                 completionCount: fulfillments == null ? 0 : fulfillments.length,
-                inCompletionCount: fulfillments == null ? 0 : 
-                  findMissedDays(pe.addedDate, new Set(fulfillments.map(f => new Date(f.completionDate).toISOString().split('T')[0])), pe.day),
+                inCompletionCount:
+                  fulfillments == null
+                    ? 0
+                    : findMissedDays(pe.addedDate, new Set(fulfillments.map(f => new Date(f.completionDate).toISOString().split('T')[0])), pe.day),
               } as FulfillmentsCurrentDayModel;
-            }
-          ),
+            }),
         );
 
         return {
@@ -213,13 +219,12 @@ export default {
             userId: p.userId,
             createdDate: p.createdDate,
           },
-          fulfillmentExerciseModel: fulfillmentExerciseModel
+          fulfillmentExerciseModel: fulfillmentExerciseModel,
         };
       }),
     );
   },
 };
-
 
 // completionList: yyyy-MM-dd formatında tarih stringleri
 function findMissedDays(addedDate: Date, completionList: Set<string>, day: number): number {

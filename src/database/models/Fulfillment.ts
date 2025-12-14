@@ -8,7 +8,7 @@ export default class Fulfillment extends Model {
 
   @field('program_exercise_id') programExerciseId!: string;
   @date('completion_date') completionDate!: Date;
-  @date('completion_date_indexer') completionDateIndexer!: Date; // ISO string // YYYY-MM-DD
+  @date('completion_date_indexer') completionDateIndexer!: string; // ISO string // YYYY-MM-DD
 
   @relation('program_exercises', 'program_exercise_id') programExercises?: Relation<ProgramExercise>;
 

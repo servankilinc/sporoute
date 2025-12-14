@@ -30,9 +30,9 @@ export default function DayPreview(): React.JSX.Element {
   return (
     <ThemedView>
       <VStack>
-        <HStack className='content-between'>
+        <HStack style={{justifyContent: "space-between", paddingHorizontal: 12}}>
           <ThemedText>Preview</ThemedText>
-          <ThemedText type='title'>{createdProgram?.name}</ThemedText>
+          <ThemedText style={{fontWeight: "bold"}}>{createdProgram?.name}</ThemedText>
         </HStack>
         <Divider className="my-2" />
         
